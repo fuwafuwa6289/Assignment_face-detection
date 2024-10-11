@@ -42,7 +42,7 @@ member_nicknames = [
 
 base_output_dir = 'Output'
 
-# สร้างโฟลเดอร์สำหรับสมาชิกแต่ละคน
+# Create folder for each member
 for role in member_roles:
     os.makedirs(os.path.join(base_output_dir, role), exist_ok=True)
 
@@ -62,6 +62,9 @@ while True:
     if not ret:
         print("Error: Could not read frame.")
         break
+
+    # Flip the frame horizontally
+    frame = cv2.flip(frame, 1)
 
     # Convert frame to grayscale
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
